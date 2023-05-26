@@ -1,7 +1,8 @@
 #![allow(non_snake_case)]
 use ndarray::Array1;
 use ndarray::array;
-
+use rand::thread_rng;
+use rand::Rng;
 use crate::neuron::Neuron;
 use crate::utils::math::deriv_sigmoid;
 use crate::utils::math::sigmoid;
@@ -20,11 +21,9 @@ pub(crate) struct MyNeuralNetwork {
 
 impl MyNeuralNetwork {
     pub(crate) fn new() -> Self {
-        let weights = array![0.0, 1.0];
-        let bias = 0.0;
-        let h1: Neuron = Neuron::new(&weights, bias);
-        let h2: Neuron = Neuron::new(&weights, bias);
-        let o: Neuron = Neuron::new(&weights, bias);
+        let h1: Neuron = Neuron::new(&array![thread_rng().gen::<f32>(), thread_rng().gen::<f32>()], thread_rng().gen::<f32>());
+        let h2: Neuron = Neuron::new(&array![thread_rng().gen::<f32>(), thread_rng().gen::<f32>()], thread_rng().gen::<f32>());
+        let o: Neuron = Neuron::new(&array![thread_rng().gen::<f32>(), thread_rng().gen::<f32>()], thread_rng().gen::<f32>());
 
         Self { h1, h2, o }
     }
