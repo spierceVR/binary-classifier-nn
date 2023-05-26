@@ -26,8 +26,16 @@ impl Neuron {
         self.bias
     }
 
+    pub(crate) fn mut_bias(&mut self) -> &mut f32 {
+        &mut self.bias
+    }
+
     pub(crate) fn feedforward(&self, inputs: Array1<f32>) -> f32 {
         let sum = inputs.dot(&self.weights) + self.bias;
         sigmoid(sum)
+    }
+
+    pub(crate) fn set_bias(&self, dy_pred_db3: f32) {
+        todo!()
     }
 }
