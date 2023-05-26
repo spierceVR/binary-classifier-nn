@@ -34,8 +34,4 @@ impl Neuron {
         let sum = inputs.dot(&self.weights) + self.bias;
         sigmoid(sum)
     }
-
-    pub(crate) fn set_bias(&self, dy_pred_db3: f32) {
-        todo!()
-    }
 }
