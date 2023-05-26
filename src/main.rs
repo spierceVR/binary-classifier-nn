@@ -10,7 +10,7 @@ enum Gender {
     Female,
 }
 
-fn gender_as_float(gen: Gender) -> f32 {
+fn gender_as_float(gen:&Gender) -> f32 {
     match gen {
         Gender::Male => 0.0,
         Gender::Female => 1.0,
@@ -32,12 +32,12 @@ fn main() {
     let learning_rate = 0.1;
 
     let data = vec![(x, 0.0), (x1, 0.0), (x2, 1.0), (x3, 1.0)]; // (x, y_actual)
-    net.train(data, epochs, learning_rate);
+    net.train(&data, epochs, learning_rate);
 
     // make a prediction for a new input ( 115 lbs, 5'4") ( Female )
-    let y0_pred = net.predict(array![-20.0, -2.0]); 
+    let y0_pred = net.predict(&array![-20.0, -2.0]); 
     println!("y_pred: {}", y0_pred); // should be close to 1.0
-    println!("y_actual: {}", gender_as_float(Gender::Female)); // 1.0
+    println!("y_actual: {}", gender_as_float(&Gender::Female)); // 1.0
 
 
 }
